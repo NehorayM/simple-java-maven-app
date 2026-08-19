@@ -2,12 +2,14 @@ FROM maven:3.9-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 
-ARG APP_VERSION
 
 COPY pom.xml .
 
-RUN mvn versions:set -DnewVersion=${APP_VERSION} -DgenerateBackupPoms=false
 RUN mvn dependency:go-offline -B
+
+ARG APP_VERSION=1.0.0
+
+RUN mvn versions:set -DnewVersion=${APP_VERSION} -DgenerateBackupPoms=false
 
 COPY src ./src
 
