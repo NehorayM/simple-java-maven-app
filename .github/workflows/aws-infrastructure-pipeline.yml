@@ -5,8 +5,8 @@ on:
     branches: ["AWS-Infrastructure"]
 
 jobs:
-  build-and-publish:
-    runs-on: ubuntu-latest
+  build-push-and-deploy:
+    runs-on: self-hosted
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
